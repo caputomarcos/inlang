@@ -43,7 +43,7 @@ async function main() {
           api_key: "32j2f0onanf39-0001-9rj31nfwqm0-d0m02das",
           default_iso_code: "en",
           languages: {
-            createMany: { data: [{ iso_code: "en" }, { iso_code: "de" }] },
+            createMany: { data: [{iso_code: "en"},{ iso_code: "de" }] },
           },
           keys: {
             create: [
