@@ -1,6 +1,17 @@
 <script lang="ts" context="module">
 	import { auth } from '$lib/services/auth';
 	import type { LoadOutput } from '@sveltejs/kit';
+	import Login16 from 'carbon-icons-svelte/lib/Login16';
+	import {
+		PasswordInput,
+		FluidForm,
+		Form,
+		TextInput,
+		Checkbox,
+		Grid,
+		Row,
+		Column
+	} from 'carbon-components-svelte';
 
 	export async function load(): Promise<LoadOutput> {
 		// user is already logged in
@@ -16,7 +27,7 @@
 
 <script lang="ts">
 	import Center from '$lib/components/Center.svelte';
-	import { Button, InlineLoading, Link, TextInput, Tile } from 'carbon-components-svelte';
+	import { Button, InlineLoading, Link, Tile } from 'carbon-components-svelte';
 	import { PostgrestError } from '@supabase/postgrest-js';
 
 	let loading = false;
@@ -53,7 +64,7 @@
 
 <Link href="/auth/dev-login">go to developer login</Link>
 
-<div class="w-full h-screen">
+<!-- <div class="w-full h-screen">
 	<Center>
 		<Tile>
 			<div class="col-6 form-widget">
@@ -68,6 +79,48 @@
 					{/if}
 				</Button>
 			</div>
+		</Tile>
+	</Center>
+</div>
+ -->
+
+<div class="w-full h-screen">
+	<Center>
+		<Tile style="width: 530px;  height: 372px" class="pl-1 mr-1">
+			<Grid>
+				<div class="divide-black">
+					<Row class="mb-4 mt-1"><h1>Log in</h1></Row>
+					<Row>Don't have an account? <Link href="/">Create one</Link></Row>
+
+					<Form class="mt-3">
+						<Row>
+							<TextInput labelText="User name" placeholder="Enter user name..." required /></Row
+						>
+
+						<Row class="mt-4">
+							<PasswordInput
+								required
+								type="password"
+								labelText="Password"
+								placeholder="Enter password..."
+							/>
+							<Link href="#">Forgot password?</Link>
+						</Row>
+						<Row><Checkbox labelText="Remember me" /></Row>
+						<Row
+							><Button
+								icon={Login16}
+								iconDescription="Login"
+								class="mt-2.5 mb-1"
+								style="width: 400px;">Log in</Button
+							></Row
+						>
+					</Form>
+				</div>
+				<div>
+					<Row class="mt-2 divide-black">Alternative login</Row>
+				</div>
+			</Grid>
 		</Tile>
 	</Center>
 </div>
